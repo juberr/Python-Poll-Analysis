@@ -7,7 +7,7 @@ import os
 
 # Add a variable to load a file from a path.
 current_folder = os.path.dirname(os.path.abspath(__file__))
-file_to_load = os.path.join(current_folder,"election_results.csv")
+file_to_load = os.path.join(current_folder,"resources","election_results.csv")
 # Add a variable to save the file to a path.
 file_to_save = os.path.join(current_folder,"analysis", "election_analysis.txt")
 
@@ -48,7 +48,7 @@ with open(file_to_load) as election_data:
         # Add to the total vote count
         total_votes = total_votes + 1
 
-        # 3: Extract the county name from each row.
+        # 3: Extract the county and candidate name from each row.
         candidate_name = row[2]
         county_name = row[1]
 
@@ -98,7 +98,8 @@ with open(file_to_save, "w") as txt_file:
         vote_percentage = float(votes)/float(total_votes) * 100
 
          # 6d: Print the county results to the terminal.
-        county_results = f'{county}: {vote_percentage:.1f}% ({votes:,})\n'
+        county_results = (
+            f'{county}: {vote_percentage:.1f}% ({votes:,})\n')
         print(county_results)
          # 6e: Save the county votes to a text file.
         txt_file.write(county_results)
@@ -111,14 +112,14 @@ with open(file_to_save, "w") as txt_file:
 
     # 7: Print the county with the largest turnout to the terminal.
     largest_county_summary = (
-        f"-------------------------\n"
+        f"\n-------------------------\n"
         f"Largest County Turnout: {largest_county_name}\n"
-        f"-------------------------\n")
+        f"-------------------------\n"
+        '\n')
     print(largest_county_summary)
 
-
     # 8: Save the county with the largest turnout to a text file.
-
+    txt_file.write(largest_county_summary)
 
     # Save the final candidate vote count to the text file.
     for candidate_name in candidate_votes:
@@ -143,6 +144,7 @@ with open(file_to_save, "w") as txt_file:
 
     # Print the winning candidate (to terminal)
     winning_candidate_summary = (
+        "\n"
         f"-------------------------\n"
         f"Winner: {winning_candidate}\n"
         f"Winning Vote Count: {winning_count:,}\n"
