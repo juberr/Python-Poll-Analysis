@@ -8,12 +8,11 @@
 import csv
 import os
 # Assign a variable to load a file from a path.
-file_to_load = os.path.join("Desktop","UofT Bootcamp","Module 3 - Python","resources", "election_results.csv")
+file_to_load = os.path.join("../module work/resources/election_results.csv")
 # Assign a variable to save the file to a path.
-file_to_save = os.path.join("Desktop","UofT Bootcamp","Module 3 - Python","resources","analysis", "election_analysis.txt")
+file_to_save = os.path.join("analysis", "election_analysis.txt")
 
 candidate_options = []
-
 candidate_votes = {}
 
 winning_candidate = ""
@@ -30,7 +29,7 @@ with open(file_to_load) as election_data:
     
     rowcount = 0
     for row in file_reader:
-        rowcount +=1
+        rowcount += 1
         
         candidate_name = row[2]
         

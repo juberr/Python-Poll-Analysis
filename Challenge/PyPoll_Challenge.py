@@ -6,10 +6,9 @@ import csv
 import os
 
 # Add a variable to load a file from a path.
-current_folder = os.path.dirname(os.path.abspath(__file__))
-file_to_load = os.path.join(current_folder,"resources","election_results.csv")
+file_to_load = os.path.join("../Challenge/resources/election_results.csv")
 # Add a variable to save the file to a path.
-file_to_save = os.path.join(current_folder,"analysis", "election_analysis.txt")
+file_to_save = os.path.join("analysis", "election_analysis.txt")
 
 # Initialize a total vote counter.
 total_votes = 0
